@@ -29,6 +29,7 @@ version = "2021.2"
 project {
 
     vcsRoot(HttpsGithubComIyankeBigdata)
+    vcsRoot(Eclipse_1)
 
     buildType(Er)
     buildType(Eclipse)
@@ -36,6 +37,10 @@ project {
 
 object Eclipse : BuildType({
     name = "eclipse"
+
+    vcs {
+        root(Eclipse_1)
+    }
 })
 
 object Er : BuildType({
@@ -50,6 +55,14 @@ object Er : BuildType({
             branchFilter = ""
         }
     }
+})
+
+object Eclipse_1 : GitVcsRoot({
+    id("Eclipse")
+    name = "eclipse"
+    url = "https://github.com/iyanke/java_eclipse"
+    branch = "master"
+    branchSpec = "+:*"
 })
 
 object HttpsGithubComIyankeBigdata : GitVcsRoot({
