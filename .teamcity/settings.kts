@@ -1,4 +1,5 @@
 import jetbrains.buildServer.configs.kotlin.*
+import jetbrains.buildServer.configs.kotlin.buildSteps.maven
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
 import jetbrains.buildServer.configs.kotlin.vcs.GitVcsRoot
 
@@ -40,6 +41,14 @@ object Eclipse : BuildType({
 
     vcs {
         root(Eclipse_1)
+    }
+
+    steps {
+        maven {
+            goals = "clean test"
+            pomLocation = "java_eclipse/pom.xml"
+            runnerArgs = "-Dmaven.test.failure.ignore=true"
+        }
     }
 })
 
