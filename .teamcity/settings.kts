@@ -31,7 +31,12 @@ project {
     vcsRoot(HttpsGithubComIyankeBigdata)
 
     buildType(Er)
+    buildType(Eclipse)
 }
+
+object Eclipse : BuildType({
+    name = "eclipse"
+})
 
 object Er : BuildType({
     name = "er"
