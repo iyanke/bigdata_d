@@ -60,9 +60,14 @@ object Er : BuildType({
 object Eclipse_1 : GitVcsRoot({
     id("Eclipse")
     name = "eclipse"
-    url = "https://github.com/iyanke/java_eclipse"
+    url = "git@github.com:iyanke/java_eclipse.git"
     branch = "master"
     branchSpec = "+:*"
+    authMethod = uploadedKey {
+        userName = "git"
+        uploadedKey = "git1"
+    }
+    param("secure:password", "")
 })
 
 object HttpsGithubComIyankeBigdata : GitVcsRoot({
