@@ -1,5 +1,4 @@
 import jetbrains.buildServer.configs.kotlin.*
-import jetbrains.buildServer.configs.kotlin.buildFeatures.testsSplit
 import jetbrains.buildServer.configs.kotlin.buildSteps.maven
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
 import jetbrains.buildServer.configs.kotlin.vcs.GitVcsRoot
@@ -49,12 +48,6 @@ object Eclipse : BuildType({
             goals = "clean test"
             pomLocation = "java_eclipse/pom.xml"
             runnerArgs = "-Dmaven.test.failure.ignore=true"
-        }
-    }
-
-    features {
-        testsSplit {
-            numberOfParts = 2
         }
     }
 })
