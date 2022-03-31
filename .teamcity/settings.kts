@@ -33,12 +33,35 @@ project {
     vcsRoot(HttpsGithubComIyankeBigdata)
     vcsRoot(Eclipse_1)
 
+    buildType(Eclipse1)
     buildType(Er)
     buildType(Eclipse)
 }
 
 object Eclipse : BuildType({
     name = "eclipse"
+
+    vcs {
+        root(Eclipse_1)
+    }
+
+    steps {
+        maven {
+            goals = "clean test"
+            pomLocation = "java_eclipse/pom.xml"
+            runnerArgs = "-Dmaven.test.failure.ignore=true"
+        }
+    }
+
+    features {
+        testsSplit {
+            numberOfParts = 2
+        }
+    }
+})
+
+object Eclipse1 : BuildType({
+    name = "eclipse1"
 
     vcs {
         root(Eclipse_1)
