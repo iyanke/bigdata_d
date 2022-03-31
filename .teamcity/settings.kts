@@ -1,5 +1,4 @@
 import jetbrains.buildServer.configs.kotlin.*
-import jetbrains.buildServer.configs.kotlin.buildFeatures.golang
 import jetbrains.buildServer.configs.kotlin.buildFeatures.testsSplit
 import jetbrains.buildServer.configs.kotlin.buildSteps.maven
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
@@ -57,9 +56,6 @@ object Eclipse : BuildType({
         testsSplit {
             enabled = false
             numberOfParts = 2
-        }
-        golang {
-            testFormat = "json"
         }
     }
 })
