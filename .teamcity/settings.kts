@@ -54,7 +54,6 @@ object Eclipse : BuildType({
 
     features {
         testsSplit {
-            enabled = false
             numberOfParts = 2
         }
     }
