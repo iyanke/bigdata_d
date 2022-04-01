@@ -63,7 +63,7 @@ object Eclipse_3 : BuildType({
 })
 
 object Eclipse1 : BuildType({
-    name = "eclipse1"
+    name = "splited tests"
 
     vcs {
         root(Eclipse1_1)
