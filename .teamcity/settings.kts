@@ -30,19 +30,21 @@ version = "2021.2"
 
 project {
 
+    vcsRoot(Eclipse1_1)
     vcsRoot(HttpsGithubComIyankeBigdata)
-    vcsRoot(Eclipse_1)
+    vcsRoot(Eclipse_4)
 
     buildType(Eclipse1)
     buildType(Er)
-    buildType(Eclipse)
+    buildType(Eclipse_3)
 }
 
-object Eclipse : BuildType({
+object Eclipse_3 : BuildType({
+    id("Eclipse")
     name = "eclipse"
 
     vcs {
-        root(Eclipse_1)
+        root(Eclipse_4)
     }
 
     steps {
@@ -64,7 +66,7 @@ object Eclipse1 : BuildType({
     name = "eclipse1"
 
     vcs {
-        root(Eclipse_1)
+        root(Eclipse1_1)
     }
 
     steps {
@@ -96,10 +98,23 @@ object Er : BuildType({
     }
 })
 
-object Eclipse_1 : GitVcsRoot({
+object Eclipse_4 : GitVcsRoot({
     id("Eclipse")
     name = "eclipse"
     url = "git@github.com:iyanke/java_eclipse.git"
+    branch = "master"
+    branchSpec = "+:*"
+    authMethod = uploadedKey {
+        userName = "git"
+        uploadedKey = "git1"
+    }
+    param("secure:password", "")
+})
+
+object Eclipse1_1 : GitVcsRoot({
+    id("Eclipse1")
+    name = "eclipse1"
+    url = "git@github.com:iyanke/eclipse.git"
     branch = "master"
     branchSpec = "+:*"
     authMethod = uploadedKey {
