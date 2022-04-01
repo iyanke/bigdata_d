@@ -29,6 +29,7 @@ create(DslContext.projectId, BuildType({
 
     features {
         testsSplit {
+            enabled = false
             numberOfParts = 2
         }
     }
