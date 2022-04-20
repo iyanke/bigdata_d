@@ -1,8 +1,7 @@
 package patches.buildTypes
 
 import jetbrains.buildServer.configs.kotlin.*
-import jetbrains.buildServer.configs.kotlin.buildFeatures.TestsSplitFeature
-import jetbrains.buildServer.configs.kotlin.buildFeatures.testsSplit
+import jetbrains.buildServer.configs.kotlin.BuildFeature
 import jetbrains.buildServer.configs.kotlin.ui.*
 
 /*
@@ -11,10 +10,16 @@ To apply the patch, change the buildType with id = 'Eclipse'
 accordingly, and delete the patch script.
 */
 changeBuildType(RelativeId("Eclipse")) {
+    vcs {
+        remove(RelativeId("Eclipse"))
+        add(RelativeId("Eclipse_2"))
+    }
+
     features {
-        val feature1 = find<TestsSplitFeature> {
-            testsSplit {
-                numberOfParts = 2
+        val feature1 = find<BuildFeature> {
+            feature {
+                type = "splitTests"
+                param("numberOfParts", "2")
             }
         }
         feature1.apply {
