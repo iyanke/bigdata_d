@@ -2,6 +2,8 @@ package patches.buildTypes
 
 import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.BuildFeature
+import jetbrains.buildServer.configs.kotlin.buildSteps.maven
+import jetbrains.buildServer.configs.kotlin.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.ui.*
 
 /*
@@ -25,6 +27,21 @@ changeBuildType(RelativeId("Eclipse")) {
     vcs {
         remove(RelativeId("Eclipse"))
         add(RelativeId("Eclipse_2"))
+    }
+
+    expectSteps {
+        maven {
+            goals = "clean test"
+            pomLocation = "java_eclipse/pom.xml"
+            runnerArgs = "-Dmaven.test.failure.ignore=true"
+        }
+    }
+    steps {
+        insert(1) {
+            script {
+                scriptContent = "echo %a%"
+            }
+        }
     }
 
     features {
