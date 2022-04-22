@@ -12,7 +12,7 @@ accordingly, and delete the patch script.
 changeBuildType(RelativeId("Eclipse")) {
     params {
         add {
-            param("a", "")
+            param("a", "%b%")
         }
         add {
             param("b", "%c%")
