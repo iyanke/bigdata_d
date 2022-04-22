@@ -17,6 +17,9 @@ changeBuildType(RelativeId("Eclipse")) {
         add {
             param("b", "%c%")
         }
+        add {
+            param("c", "ccc")
+        }
     }
 
     vcs {
