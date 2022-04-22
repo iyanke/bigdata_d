@@ -10,6 +10,12 @@ To apply the patch, change the buildType with id = 'Eclipse'
 accordingly, and delete the patch script.
 */
 changeBuildType(RelativeId("Eclipse")) {
+    params {
+        add {
+            param("a", "")
+        }
+    }
+
     vcs {
         remove(RelativeId("Eclipse"))
         add(RelativeId("Eclipse_2"))
